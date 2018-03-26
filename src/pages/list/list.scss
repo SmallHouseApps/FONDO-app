@@ -1,0 +1,93 @@
+page-list {
+    
+    .card-background-page{
+        box-shadow: none;
+        background: rgb(245, 245, 245);
+    }
+
+    .transparent{
+        background: transparent !important;
+    }
+
+    .applic-delivery{
+        border-left: 10px solid darkorange;
+    }
+
+    .applic-takeout{
+        border-left: 10px solid darkgreen;
+    }
+
+    .dots{
+        margin: 15px;
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+
+    .dots:last-child{
+        margin-bottom: 25px !important;
+    }
+
+    .dots:after{
+        content:'. . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . . .';
+        color: grey;
+        display:block;
+        white-space:nowrap;
+        overflow:hidden;
+    }
+
+    .dots p{
+        color: grey;
+        padding-bottom: 0px;
+    }
+
+    .dots p:last-child{
+        color: grey;
+        font-weight: bold;
+        padding-bottom: 0px;
+    }
+
+    .category-tabs{
+        width: 100%;
+        overflow-y: hidden;
+        overflow-x: scroll;
+        white-space: nowrap;
+        color: grey;
+        height: 55px !important; 
+        background-color: white;
+    }
+
+    .category-tab{
+        margin: 10px;
+        text-align: center;
+        display: inline-block;
+        white-space: nowrap;
+        font-size: 0.8em;
+        width: 22%;
+    }
+
+    .category-tab-slide{
+        width: 350px !important;
+    }
+
+    .category-tab p {
+        margin-top: 0;
+        margin-bottom: 3px;
+    }
+
+    .toolbar-md {
+        min-height: 0;
+    }
+
+    .searchbar-search-icon{
+        display: none;
+    }
+
+    .segment-md .segment-button{
+        font-size: 1.5rem !important;
+    }
+
+    ion-spinner {
+        margin: 5px;
+        margin-left: 48%;
+    }
+}

@@ -1,0 +1,132 @@
+<ion-header [elasticHeader]="myContent" #ionHeader>
+  <ion-navbar color="primary">
+    <button ion-button menuToggle style="position: absolute; color: grey;" >
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="openModal()">
+        <ion-icon name="more"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-searchbar placeholder="Поиск..."></ion-searchbar>
+  </ion-navbar>
+  <ion-toolbar color="primary" no-border no-padding> 
+      <ion-segment [(ngModel)]="applicsView" (ionChange)="segmentChangeEvent();" color="light">
+        <ion-segment-button active value="list">
+          Списком
+        </ion-segment-button>
+        <ion-segment-button value="map">
+          На карте
+        </ion-segment-button>
+      </ion-segment>
+    </ion-toolbar>
+    <div class="category-tabs" #applicsCategoryTabs>
+              <div class="category-tab">
+                <p>Все</p>
+                <ion-badge color="light">16</ion-badge>
+              </div>
+              <div class="category-tab">
+                <p>Выполненные</p>
+                <ion-badge color="light">16</ion-badge>
+              </div>
+              <div class="category-tab">
+                <p>В обработке</p>
+                <ion-badge color="light">16</ion-badge>
+              </div>
+                <div class="category-tab">
+                    <p>Заборы</p>
+                    <ion-badge color="light">16</ion-badge>
+                  </div>
+                  <div class="category-tab">
+                    <p>Доставки</p>
+                    <ion-badge color="light">16</ion-badge>
+                  </div>
+                  <div class="category-tab">
+                    <p>Точки</p>
+                    <ion-badge color="light">16</ion-badge>
+                  </div>
+              <div style="display:inline-block; position: relative; top: -13px;"><button ion-button clear>Задать последовательность</button></div>
+    </div>
+</ion-header>
+
+<ion-content class="card-background-page" fullscreen (ionScroll)="scrollEvent();"  (ionScrollStart)="analyzeContent()" #myContent id="my-content">
+    <div class="category-tabs" #applicsCategoryTabsFake style="position: fixed; top: 0">
+        <div class="category-tab">
+          <p>Все</p>
+          <ion-badge color="light">16</ion-badge>
+        </div>
+        <div class="category-tab">
+          <p>Выполненные</p>
+          <ion-badge color="light">16</ion-badge>
+        </div>
+        <div class="category-tab">
+          <p>В обработке</p>
+          <ion-badge color="light">16</ion-badge>
+        </div>
+          <div class="category-tab">
+              <p>Заборы</p>
+              <ion-badge color="light">16</ion-badge>
+            </div>
+            <div class="category-tab">
+              <p>Доставки</p>
+              <ion-badge color="light">16</ion-badge>
+            </div>
+            <div class="category-tab">
+              <p>Точки</p>
+              <ion-badge color="light">16</ion-badge>
+            </div>
+        <div style="display:inline-block; position: relative; top: -13px;"><button ion-button clear>Задать последовательность</button></div>
+</div>
+
+  <ion-card *ngFor="let applic of applics" (click)="applicTapped($event, item)" [ngClass]="whatApplicTypeIsIt(applic.type)" #applicCard>
+    <ion-card-header style="text-align:center">
+      <b>Заявка №{{applic.id}}</b>
+    </ion-card-header>
+      
+        <div class="dots">
+          <p style="float: left">Номер заказчика</p>
+          <p style="float: right">53703</p>
+        </div>
+      
+
+      
+        <div class="dots">
+          <p style="float: left">Заказчик</p>
+          <p style="float: right">{{applic.account_name}}</p>
+        </div>
+      
+
+      
+        <div class="dots">
+          <p style="float: left">Номер заказчика</p>
+          <p style="float: right">53703</p>
+        </div>
+      
+
+      
+        <div class="dots">
+          <p style="float: left">Номер заказчика</p>
+          <p style="float: right">53703</p>
+        </div>
+      
+
+      
+        <div class="dots">
+          <p style="float: left">Номер заказчика</p>
+          <p style="float: right;">53703</p>
+        </div>
+      
+  </ion-card>
+
+  <ion-spinner name="crescent"></ion-spinner>
+  
+  
+  <ion-fab right bottom (click)="presentSettingsModal()">
+    <button ion-fab color="light"><ion-icon name="settings"></ion-icon></button>
+  </ion-fab>
+  
+
+</ion-content>
+
+
+

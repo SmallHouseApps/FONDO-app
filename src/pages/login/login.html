@@ -1,0 +1,21 @@
+<ion-content class="background">
+  <img src="assets/white-logo.png">
+  <ion-card>
+    <ion-card-header>
+      Авторизация
+    </ion-card-header>
+    <ion-card-content>
+      <ion-list no-line>
+        <ion-item>
+          <ion-input input="text" placeholder="Email"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-input input="password" placeholder="Пароль"></ion-input>
+        </ion-item>
+      </ion-list>
+      <a> Забыли пароль? <b>Восстановить</b> </a>
+      <button ion-button block outline color="light" (click)="authRequest();">Войти</button>
+    </ion-card-content>
+  </ion-card>
+  <button ion-button clear full color="light">Нет Аккаунта? Зарегистрироваться</button>
+</ion-content>
