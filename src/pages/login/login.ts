@@ -3,6 +3,7 @@ import { NavController, LoadingController, ViewController } from 'ionic-angular'
 import { ListPage } from '../../pages/list/list';
 import { Storage } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
+import { Pro } from '@ionic/pro';
 // import * as $ from 'jquery';
 
 @Component({
@@ -41,9 +42,7 @@ export class LoginPage {
       self.storage.set('token', response.data.token);
     })
     .catch(error => {
-
-      console.log(error);
-
+      Pro.monitoring.log(error, { level: 'error' });
     });
   }
 
