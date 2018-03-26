@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController, ViewController } from 'ionic-angular';
+import { NavController, LoadingController, ViewController, ToastController } from 'ionic-angular';
 import { ListPage } from '../../pages/list/list';
 import { Storage } from '@ionic/storage';
 import { HTTP } from '@ionic-native/http';
@@ -17,12 +17,12 @@ export class LoginPage {
     public loadingCtrl: LoadingController,
     public viewCtrl: ViewController,
     private storage: Storage,
-    private http: HTTP
+    private http: HTTP,
+    public toastCtrl: ToastController
   ) { }
   
 
   authRequest(){
-    Pro.monitoring.log('authRequest()', { level: 'error' });
     let self = this;
   	let loader = this.loadingCtrl.create({
       content: "Загрузка..."
@@ -43,8 +43,18 @@ export class LoginPage {
       self.storage.set('token', response.data.token);
     })
     .catch(error => {
-      Pro.monitoring.log(error, { level: 'error' });
+      self.presentToast(error);
     });
+  }
+
+  presentToast(text) {
+    let toast = this.toastCtrl.create({
+      message: text,
+      duration: 3000,
+      position: 'bottom'
+    });
+
+    toast.present();
   }
 
 }
