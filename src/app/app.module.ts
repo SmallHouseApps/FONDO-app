@@ -1,5 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
+import { ErrorHandler, NgModule, Injectable, Injector } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -17,6 +17,26 @@ import { GoogleMaps } from '@ionic-native/google-maps';
 import { BluetoothSerial } from '@ionic-native/bluetooth-serial';
 
 import { ElasticHeaderModule } from "ionic2-elastic-header/dist";
+import { Pro } from '@ionic/pro';
+
+@Injectable()
+export class MyErrorHandler implements ErrorHandler {
+  ionicErrorHandler: IonicErrorHandler;
+
+  constructor(injector: Injector) {
+    try {
+      this.ionicErrorHandler = injector.get(IonicErrorHandler);
+    } catch(e) {
+      // Unable to get the IonicErrorHandler provider, ensure
+      // IonicErrorHandler has been added to the providers list below
+    }
+  }
+
+  handleError(err: any): void {
+    Pro.monitoring.handleNewError(err);
+    this.ionicErrorHandler && this.ionicErrorHandler.handleError(err);
+  }
+}
 
 @NgModule({
   declarations: [
