@@ -22,6 +22,7 @@ export class LoginPage {
   
 
   authRequest(){
+    Pro.monitoring.log('authRequest()', { level: 'error' });
     let self = this;
   	let loader = this.loadingCtrl.create({
       content: "Загрузка..."
